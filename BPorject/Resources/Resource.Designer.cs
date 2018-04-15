@@ -1819,14 +1819,26 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0027
 			public const int META = 2131427367;
 			
+			// aapt resource value: 0x7f0b0067
+			public const int PassWord = 2131427431;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int RootButton = 2131427454;
+			
 			// aapt resource value: 0x7f0b0028
 			public const int SHIFT = 2131427368;
 			
 			// aapt resource value: 0x7f0b0029
 			public const int SYM = 2131427369;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int action0 = 2131427434;
+			// aapt resource value: 0x7f0b007d
+			public const int SelateButtom = 2131427453;
+			
+			// aapt resource value: 0x7f0b0066
+			public const int UserName = 2131427430;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int action0 = 2131427436;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int action_bar = 2131427415;
@@ -1849,17 +1861,17 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0035
 			public const int action_bar_title = 2131427381;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int action_container = 2131427431;
+			// aapt resource value: 0x7f0b0069
+			public const int action_container = 2131427433;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int action_context_bar = 2131427416;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int action_divider = 2131427438;
+			// aapt resource value: 0x7f0b0070
+			public const int action_divider = 2131427440;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int action_image = 2131427432;
+			// aapt resource value: 0x7f0b006a
+			public const int action_image = 2131427434;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1876,11 +1888,11 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0037
 			public const int action_mode_close_button = 2131427383;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int action_text = 2131427433;
+			// aapt resource value: 0x7f0b006b
+			public const int action_text = 2131427435;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int actions = 2131427447;
+			// aapt resource value: 0x7f0b0079
+			public const int actions = 2131427449;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int activity_chooser_view_content = 2131427384;
@@ -1906,20 +1918,20 @@ namespace BPorject
 			// aapt resource value: 0x7f0b002f
 			public const int bottom = 2131427375;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int button = 2131427430;
+			// aapt resource value: 0x7f0b0068
+			public const int button = 2131427432;
 			
 			// aapt resource value: 0x7f0b003e
 			public const int buttonPanel = 2131427390;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int cancel_action = 2131427435;
+			// aapt resource value: 0x7f0b006d
+			public const int cancel_action = 2131427437;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int checkbox = 2131427406;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int chronometer = 2131427443;
+			// aapt resource value: 0x7f0b0075
+			public const int chronometer = 2131427445;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int collapseActionView = 2131427371;
@@ -1948,8 +1960,8 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0022
 			public const int end = 2131427362;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int end_padder = 2131427449;
+			// aapt resource value: 0x7f0b007b
+			public const int end_padder = 2131427451;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int expand_activities_button = 2131427385;
@@ -1969,8 +1981,8 @@ namespace BPorject
 			// aapt resource value: 0x7f0b003d
 			public const int icon = 2131427389;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int icon_group = 2131427448;
+			// aapt resource value: 0x7f0b007a
+			public const int icon_group = 2131427450;
 			
 			// aapt resource value: 0x7f0b002c
 			public const int ifRoom = 2131427372;
@@ -1978,11 +1990,14 @@ namespace BPorject
 			// aapt resource value: 0x7f0b003a
 			public const int image = 2131427386;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int info = 2131427444;
+			// aapt resource value: 0x7f0b0076
+			public const int info = 2131427446;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int italic = 2131427380;
+			
+			// aapt resource value: 0x7f0b007f
+			public const int kuaidiText = 2131427455;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int line1 = 2131427337;
@@ -1996,11 +2011,11 @@ namespace BPorject
 			// aapt resource value: 0x7f0b003c
 			public const int list_item = 2131427388;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int media_actions = 2131427437;
+			// aapt resource value: 0x7f0b006f
+			public const int media_actions = 2131427439;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int message = 2131427450;
+			// aapt resource value: 0x7f0b0080
+			public const int message = 2131427456;
 			
 			// aapt resource value: 0x7f0b0023
 			public const int middle = 2131427363;
@@ -2017,14 +2032,17 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0010
 			public const int normal = 2131427344;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int notification_background = 2131427446;
+			// aapt resource value: 0x7f0b0078
+			public const int notification_background = 2131427448;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int notification_main_column = 2131427440;
+			// aapt resource value: 0x7f0b0072
+			public const int notification_main_column = 2131427442;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int notification_main_column_container = 2131427439;
+			// aapt resource value: 0x7f0b0071
+			public const int notification_main_column_container = 2131427441;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int number = 2131427452;
 			
 			// aapt resource value: 0x7f0b0040
 			public const int parentPanel = 2131427392;
@@ -2038,11 +2056,11 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0050
 			public const int radio = 2131427408;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int right_icon = 2131427445;
+			// aapt resource value: 0x7f0b0077
+			public const int right_icon = 2131427447;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int right_side = 2131427441;
+			// aapt resource value: 0x7f0b0073
+			public const int right_side = 2131427443;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int screen = 2131427355;
@@ -2089,6 +2107,9 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0065
 			public const int select_dialog_listview = 2131427429;
 			
+			// aapt resource value: 0x7f0b0081
+			public const int sf = 2131427457;
+			
 			// aapt resource value: 0x7f0b004f
 			public const int shortcut = 2131427407;
 			
@@ -2116,8 +2137,8 @@ namespace BPorject
 			// aapt resource value: 0x7f0b001e
 			public const int src_over = 2131427358;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int status_bar_latest_event_content = 2131427436;
+			// aapt resource value: 0x7f0b006e
+			public const int status_bar_latest_event_content = 2131427438;
 			
 			// aapt resource value: 0x7f0b0051
 			public const int submenuarrow = 2131427409;
@@ -2143,8 +2164,8 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0044
 			public const int textSpacerNoTitle = 2131427396;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int time = 2131427442;
+			// aapt resource value: 0x7f0b0074
+			public const int time = 2131427444;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int title = 2131427342;
@@ -2175,6 +2196,12 @@ namespace BPorject
 			
 			// aapt resource value: 0x7f0b0020
 			public const int wrap_content = 2131427360;
+			
+			// aapt resource value: 0x7f0b0082
+			public const int yd = 2131427458;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int zt = 2131427459;
 			
 			static Id()
 			{
@@ -2344,19 +2371,22 @@ namespace BPorject
 			public const int notification_template_part_time = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int select_dialog_item_material = 2130968618;
+			public const int Root = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int select_dialog_multichoice_material = 2130968619;
+			public const int select_dialog_item_material = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int select_dialog_singlechoice_material = 2130968620;
+			public const int select_dialog_multichoice_material = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int support_simple_spinner_dropdown_item = 2130968621;
+			public const int select_dialog_singlechoice_material = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int tooltip = 2130968622;
+			public const int support_simple_spinner_dropdown_item = 2130968622;
+			
+			// aapt resource value: 0x7f04002f
+			public const int tooltip = 2130968623;
 			
 			static Layout()
 			{
@@ -2364,6 +2394,22 @@ namespace BPorject
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int popup_menu = 2131558400;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
@@ -2474,11 +2520,14 @@ namespace BPorject
 			// aapt resource value: 0x7f060010
 			public const int abc_toolbar_collapse_description = 2131099664;
 			
-			// aapt resource value: 0x7f06001f
-			public const int app_name = 2131099679;
+			// aapt resource value: 0x7f060020
+			public const int app_name = 2131099680;
 			
 			// aapt resource value: 0x7f060011
 			public const int search_menu_title = 2131099665;
+			
+			// aapt resource value: 0x7f06001f
+			public const int showPopup = 2131099679;
 			
 			// aapt resource value: 0x7f06001e
 			public const int status_bar_notification_info_overflow = 2131099678;
