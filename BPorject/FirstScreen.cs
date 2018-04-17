@@ -9,12 +9,9 @@ namespace BPorject
     [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true, Icon = "@mipmap/icon")]
     public class SplashActivity : Activity
     {
-        static readonly string TAG = "X:" + typeof(SplashActivity).Name;
-
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
             base.OnCreate(savedInstanceState, persistentState);
-            Log.Debug(TAG, "SplashActivity.OnCreate");
         }
 
         // Launches the startup task
@@ -31,9 +28,7 @@ namespace BPorject
         // Simulates background work that happens behind the splash screen
         async void SimulateStartup()
         {
-            Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
-            await Task.Delay(3500); // Simulate a bit of startup work.
-            Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
+            await Task.Delay(2500); // Simulate a bit of startup work.
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
     }

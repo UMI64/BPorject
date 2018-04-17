@@ -8,7 +8,7 @@ using System.IO;
  
 namespace KdGoldAPI
 {
-    public class KdApiSearchDemo
+    public class KuaiDiNiaoAPI
     {
         //电商ID
         private string EBusinessID = "1237100";

@@ -11,34 +11,33 @@ using Android.Views;
 using Android.Widget;
 using KdGoldAPI;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Json;
+
 namespace BPorject
 {
-    [Activity(Label = "RootActivity")]
+    [Activity(Label = "快递查询")]
     public class RootActivity : Activity
     {
         int count = 0;
-        string result = "",Number="",Comp="";
+        string result = "", Comp = "";
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Root);
             Button RootButton = FindViewById<Button>(Resource.Id.RootButton);
-            TextView Text = FindViewById<TextView>(Resource.Id.kuaidiText);
-            TextView NumberText= FindViewById<TextView>(Resource.Id.number);
+            ListView ListText = FindViewById<ListView>(Resource.Id.listView1);
+            EditText NumberText = FindViewById<EditText>(Resource.Id.number);
             // Create your application here
             Button showPopupMenu = FindViewById<Button>(Resource.Id.SelateButtom);
 
-            showPopupMenu.Click += (s, arg) => 
+            showPopupMenu.Click += (s, arg) =>
             {
 
                 PopupMenu menu = new PopupMenu(this, showPopupMenu);
 
-                // with Android 3 need to use MenuInfater to inflate the menu
-                //menu.MenuInflater.Inflate (Resource.Menu.popup_menu, menu.Menu);
-
-                // with Android 4 Inflate can be called directly on the menu
                 menu.Inflate(Resource.Menu.popup_menu);
-                menu.MenuItemClick += (s1, arg1) => 
+                menu.MenuItemClick += (s1, arg1) =>
                 {
                     switch (arg1.Item.ItemId)
                     {
@@ -47,8 +46,7 @@ namespace BPorject
                         case Resource.Id.zt: showPopupMenu.Text = "中通"; Comp = "ZT"; break;
                     }
                 };
-                // Android 4 now has the DismissEvent
-                menu.DismissEvent += (s2, arg2) => 
+                menu.DismissEvent += (s2, arg2) =>
                 {
 
                 };
@@ -59,15 +57,63 @@ namespace BPorject
             {
                 if (count < 1)
                 {
-                    KdApiSearchDemo kuaidi = new KdApiSearchDemo();
-                    if (Regex.IsMatch(NumberText.Text, @"^\d+$"))
+                    RootButton.Text = "查询中...";
+                    if (Regex.IsMatch(NumberText.Text, @"^\d+$") && Comp.Length != 0)
                     {
-                        result = kuaidi.getOrderTracesByJson(NumberText.Text, Comp);
-                        Text.Text = result;
+                        Task ChaXun = new Task(() => { KuaiDiChaXun(); });
+                        ChaXun.Start();
                     }
                 }
-                RootButton.Text = "你点了" + count++ + "下";
+                else RootButton.Text = "你点了" + count++ + "下";
             };
+             async void KuaiDiChaXun()
+            {
+                KuaiDiNiaoAPI kuaidi = new KuaiDiNiaoAPI();
+                await Task.Delay(10);
+                result = kuaidi.getOrderTracesByJson(NumberText.Text, Comp);
+                var JSONresult=(JsonObject)JsonObject.Parse(result);
+                String[] Traces = (from item in (JsonArray)JSONresult["Traces"] select item.ToString()).ToArray();
+            this.RunOnUiThread(() =>
+                {
+                    ListText.Adapter=new MyCustomeAdapter(this,Traces);
+                    RootButton.Text = "你点了" + count++ + "下";
+                });
+            };
+        }
+    }
+    public class MyCustomeAdapter : BaseAdapter<string>
+    {
+        string[] items;
+        Activity activity;
+
+        public MyCustomeAdapter(Activity context, string[] values): base()
+        {
+            activity = context;
+            items = values;
+        }
+
+        public override string this[int position]
+        {
+            get { return items[position]; }
+        }
+
+        public override int Count
+        {
+            get { return items.Length; }
+        }
+
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            View v = convertView;
+            if (v == null)
+                v = activity.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
+            v.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position];
+            return v;
         }
     }
 }

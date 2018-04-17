@@ -1996,9 +1996,6 @@ namespace BPorject
 			// aapt resource value: 0x7f0b0034
 			public const int italic = 2131427380;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int kuaidiText = 2131427455;
-			
 			// aapt resource value: 0x7f0b0009
 			public const int line1 = 2131427337;
 			
@@ -2007,6 +2004,9 @@ namespace BPorject
 			
 			// aapt resource value: 0x7f0b000f
 			public const int listMode = 2131427343;
+			
+			// aapt resource value: 0x7f0b007f
+			public const int listView1 = 2131427455;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int list_item = 2131427388;

@@ -37,7 +37,7 @@ namespace BPorject
         }
         async void Login()
         {
-            await Task.Delay(500); // Simulate a bit of startup work.
+            await Task.Delay(500);
             StartActivity(new Intent(this, typeof(RootActivity)));
         }
 
