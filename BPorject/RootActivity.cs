@@ -59,46 +59,69 @@ namespace BPorject
             {
                 if (count < 1)
                 {
-                    if (Regex.IsMatch(NumberText.Text, @"^\d+$") && Comp.Length != 0)
+                    if (Regex.IsMatch(NumberText.Text, @"^\d+$"))
                     {
                         RootButton.Text = "查询中...";
                         Task ChaXun = new Task(() => { KuaiDiChaXun(); });
                         ChaXun.Start();
                     }
-                    else if (Regex.IsMatch(NumberText.Text, @"^\d+$") || Comp.Length != 0)
-                    {
-                        if (Comp.Length == 0)
-                        {
-                            RootButton.Text = "请选择快递公司";
-                        }
-                        else if (Comp.Length != 0)
-                        {
-                            RootButton.Text = "请输入快递单号";
-                        }
-                    }
                     else
                     {
-                        RootButton.Text = "请输入快递单号并且请选择快递公司";
+                        RootButton.Text = "请输入快递单号";
                     }
                 }
                 else RootButton.Text = "你点了" + count++ + "下";
             };
              async void KuaiDiChaXun()
             {
+                JsonObject JSONresult;
                 KuaiDiNiaoAPI kuaidi = new KuaiDiNiaoAPI();
                 await Task.Delay(10);
-                result = kuaidi.getOrderTracesByJson(NumberText.Text, Comp);
-                var JSONresult=(JsonObject)JsonObject.Parse(result);
-                String[] Traces = (from item in (JsonArray)JSONresult["Traces"] select item.ToString()).ToArray();
-            this.RunOnUiThread(() =>
+
+                if (Comp.Length == 0)
                 {
-                    ListText.Adapter=new MyCustomeAdapter(this,Traces);
-                    if (Traces.Length != 0) RootButton.Text = "你点了" + count++ + "下";
+                    result = kuaidi.getOrderShipperNameByJson(NumberText.Text);
+                    JSONresult = (JsonObject)JsonObject.Parse(result);
+                    if (JSONresult["Success"] == true)
+                    {
+                        this.RunOnUiThread(() =>
+                        {
+                            showPopupMenu.Text = JSONresult["Shipper"][0]["ShipperName"];
+                        });
+                        result = kuaidi.getOrderTracesByJson(NumberText.Text, JSONresult["Shipper"][0]["ShipperCode"]);
+                        JSONresult = (JsonObject)JsonObject.Parse(result);
+                    }
                     else
                     {
-                        RootButton.Text = "查询失败："+ JSONresult["Reason"];
+                        this.RunOnUiThread(() =>
+                        {
+                            showPopupMenu.Text = "未能匹配到快递公司：" + JSONresult["Reason"];
+                            RootButton.Text = "查询失败";
+                        });
                     }
-                });
+                }
+                else
+                {
+                    result = kuaidi.getOrderTracesByJson(NumberText.Text, Comp);
+                    JSONresult = (JsonObject)JsonObject.Parse(result);
+                }
+                if (JSONresult["Success"] == true)
+                {
+                    JSONresult = (JsonObject)JsonObject.Parse(result);
+                    this.RunOnUiThread(() =>
+                    {
+                        if (JSONresult["Success"] == true)
+                        {
+                            String[] Traces = (from item in (JsonArray)JSONresult["Traces"] select item.ToString()).ToArray();
+                            ListText.Adapter = new MyCustomeAdapter(this, Traces);
+                            RootButton.Text = "你点了" + count++ + "下";
+                        }
+                        else
+                        {
+                            RootButton.Text = "查询失败：" + JSONresult["Reason"];
+                        }
+                    });
+                }
             };
         }
     }

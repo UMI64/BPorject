@@ -15,7 +15,8 @@ namespace KdGoldAPI
         //电商加密私钥，快递鸟提供，注意保管，不要泄漏
         private string AppKey = "518a73d8-1f7f-441a-b644-33e77b49d846";
         //请求url
-        private string ReqURL = "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx";
+        private string TracesReqURL = "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx";
+        private string ShipperNameReqURL = "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx";
 
         /// <summary>
         /// Json方式 查询订单物流轨迹
@@ -33,7 +34,25 @@ namespace KdGoldAPI
             param.Add("DataSign", WebUtility.UrlEncode(dataSign));
             param.Add("DataType", "2");
 
-            string result = sendPost(ReqURL, param);
+            string result = sendPost(TracesReqURL, param);
+
+            //根据公司业务处理返回的信息......
+
+            return result;
+        }
+        public string getOrderShipperNameByJson(string Number)
+        {
+            string requestData = "{'LogisticCode': '"+ Number+"'}";
+
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add("RequestData", WebUtility.UrlEncode(requestData));
+            param.Add("EBusinessID", EBusinessID);
+            param.Add("RequestType", "2002");
+            string dataSign = encrypt(requestData, AppKey, "UTF-8");
+            param.Add("DataSign", WebUtility.UrlEncode(dataSign));
+            param.Add("DataType", "2");
+
+            string result = sendPost(ShipperNameReqURL, param);
 
             //根据公司业务处理返回的信息......
 
