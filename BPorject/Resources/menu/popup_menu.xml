@@ -4,6 +4,10 @@
           android:title="顺风" />    
     <item android:id="@+id/yd"
           android:title="韵达" />  
-    <item android:id="@+id/zt"
+    <item android:id="@+id/zto"
           android:title="中通" />
+    <item android:id="@+id/sto"
+          android:title="申通" />
+    <item android:id="@+id/htky"
+          android:title="百世快递" />
 </menu>

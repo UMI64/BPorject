@@ -43,7 +43,9 @@ namespace BPorject
                     {
                         case Resource.Id.sf: showPopupMenu.Text = "顺风"; Comp = "SF"; break;
                         case Resource.Id.yd: showPopupMenu.Text = "韵达"; Comp = "YD"; break;
-                        case Resource.Id.zt: showPopupMenu.Text = "中通"; Comp = "ZT"; break;
+                        case Resource.Id.zto: showPopupMenu.Text = "中通"; Comp = "ZTO"; break;
+                        case Resource.Id.sto: showPopupMenu.Text = "申通"; Comp = "STO"; break;
+                        case Resource.Id.htky: showPopupMenu.Text = "百世快递"; Comp = "HTKY"; break;
                     }
                 };
                 menu.DismissEvent += (s2, arg2) =>
@@ -57,11 +59,26 @@ namespace BPorject
             {
                 if (count < 1)
                 {
-                    RootButton.Text = "查询中...";
                     if (Regex.IsMatch(NumberText.Text, @"^\d+$") && Comp.Length != 0)
                     {
+                        RootButton.Text = "查询中...";
                         Task ChaXun = new Task(() => { KuaiDiChaXun(); });
                         ChaXun.Start();
+                    }
+                    else if (Regex.IsMatch(NumberText.Text, @"^\d+$") || Comp.Length != 0)
+                    {
+                        if (Comp.Length == 0)
+                        {
+                            RootButton.Text = "请选择快递公司";
+                        }
+                        else if (Comp.Length != 0)
+                        {
+                            RootButton.Text = "请输入快递单号";
+                        }
+                    }
+                    else
+                    {
+                        RootButton.Text = "请输入快递单号并且请选择快递公司";
                     }
                 }
                 else RootButton.Text = "你点了" + count++ + "下";
@@ -76,7 +93,11 @@ namespace BPorject
             this.RunOnUiThread(() =>
                 {
                     ListText.Adapter=new MyCustomeAdapter(this,Traces);
-                    RootButton.Text = "你点了" + count++ + "下";
+                    if (Traces.Length != 0) RootButton.Text = "你点了" + count++ + "下";
+                    else
+                    {
+                        RootButton.Text = "查询失败："+ JSONresult["Reason"];
+                    }
                 });
             };
         }
@@ -110,9 +131,15 @@ namespace BPorject
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View v = convertView;
-            if (v == null)
-                v = activity.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
-            v.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position];
+            if (v == null) v = activity.LayoutInflater.Inflate(Resource.Layout.ListRow, parent, false);
+
+            var MainText = v.FindViewById<TextView>(Resource.Id.Medium);
+            var TimeText = v.FindViewById<TextView>(Resource.Id.Small);
+
+            var JSONresult = (JsonObject)JsonObject.Parse(items[position]);
+            MainText.Text = JSONresult["AcceptStation"];
+            TimeText.Text = JSONresult["AcceptTime"];
+
             return v;
         }
     }
